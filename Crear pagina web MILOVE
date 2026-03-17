@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILOVE | Detalles Únicos para Personas Únicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A961;
+            --gold-light: #E8D5A3;
+            --gold-dark: #A68B4B;
+            --sunflower: #F4C430;
+            --sunflower-dark: #D4A017;
+            --white: #FFFEF9;
+            --cream: #FDF8E8;
+            --brown: #5C4A32;
+            --text: #3D3229;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--white);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 254, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold-light);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-dark);
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🌻";
+            font-size: 1.5rem;
+            animation: rotate 20s linear infinite;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brown);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 50%, var(--gold-light) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(244, 196, 48, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo {
+            width: 320px;
+            height: 320px;
+            margin: 0 auto 2rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(201, 169, 97, 0.3);
+            border: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-logo img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--brown);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .hero-slogan {
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-slogan::before,
+        .hero-slogan::after {
+            content: '✦';
+            color: var(--sunflower);
+            margin: 0 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.5);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .floating-flowers {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .flower-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .flower-2 { top: 60%; right: 15%; animation-delay: 2s; }
+        .flower-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+
+        .about {
+            padding: 6rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--brown);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--sunflower));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, var(--cream), var(--gold-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(201, 169, 97, 0.2);
+        }
+
+        .about-image::before {
+            content: '🌻';
+            font-size: 8rem;
+            opacity: 0.3;
+            animation: rotate 30s linear infinite;
+        }
+
+        .about-image::after {
+            content: 'Hecho con amor';
+            position: absolute;
+            bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold-dark);
+            font-size: 1.2rem;
+        }
+
+        .services {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, var(--cream), var(--white));
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--sunflower));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(201, 169, 97, 0.2);
+            border-color: var(--gold-light);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: var(--brown);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .gallery {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background: linear-gradient(135deg, var(--gold-light), var(--cream));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(201, 169, 97, 0.3);
+        }
+
+        .gallery-item::before {
+            content: attr(data-category);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(92, 74, 50, 0.8), transparent);
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover::before {
+            transform: translateY(0);
+        }
+
+        .gallery-placeholder {
+            font-size: 4rem;
+            opacity: 0.4;
+        }
+
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--brown) 0%, #3D3229 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact .section-title {
+            color: var(--gold-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-info h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .contact-methods {
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--sunflower-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+        }
+
+        footer {
+            background: #2C2419;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-logo {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">MILOVE</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="floating-flowers flower-1">🌻</div>
+        <div class="floating-flowers flower-2">✨</div>
+        <div class="floating-flowers flower-3">🌻</div>
+        
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="IMG-20260317-WA0062.jpg" alt="MILOVE Logo">
+            </div>
+            <h1>Detalles Únicos para Personas Únicas</h1>
+            <p class="hero-slogan">Hecho a mano, hecho con amor</p>
+            <p class="hero-description">
+                Transformamos tus ideas en recuerdos inolvidables. Desde regalos personalizados 
+                hasta decoración de eventos, cada pieza es única como tú.
+            </p>
+            <a href="#contacto" class="cta-button">Cotiza tu Proyecto</a>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestra Historia</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>
+                        <strong>MILOVE</strong> nació del amor por crear cosas hermosas y significativas. 
+                        Cada detalle que elaboramos cuenta una historia, tu historia.
+                    </p>
+                    <p>
+                        Nos especializamos en <strong>todo tipo de detalles personalizados</strong>: 
+                        regalos para ocasiones especiales, decoración de eventos, artículos corporativos, 
+                        detalles para bodas, bautizos, cumpleaños y cualquier momento que merezca ser recordado.
+                    </p>
+                    <p>
+                        No hay idea demasiado pequeña ni proyecto demasiado grande. 
+                        Si lo puedes imaginar, nosotros lo podemos crear. ✨
+                    </p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title fade-in">¿Qué Hacemos?</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem; color: var(--text);">
+                Si lo puedes imaginar, lo creamos. Aquí algunas de nuestras especialidades:
+            </p>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">🎁</span>
+                    <h3>Regalos Personalizados</h3>
+                    <p>Cajas sorpresa, kits especiales, regalos corporativos y cualquier detalle que quieras sorprender.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">💝</span>
+                    <h3>Eventos Especiales</h3>
+                    <p>Bodas, bautizos, cumpleaños, aniversarios. Decoración y souvenirs que tus invitados amarán.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🏢</span>
+                    <h3>Corporativo</h3>
+                    <p>Merchandising personalizado, regalos para empleados y clientes, kits de bienvenida.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">👶</span>
+                    <h3>Baby & Kids</h3>
+                    <p>Decoración baby shower, bautizos, primeras comuniones y detalles para los más pequeños.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">💐</span>
+                    <h3>Temporada</h3>
+                    <p>San Valentín, Día de las Madres, Navidad, Halloween. Decoración y regalos para cada época.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">✨</span>
+                    <h3>Y Mucho Más...</h3>
+                    <p>¿Tienes una idea diferente? ¡Nos encantan los retos! Cuéntanos qué tienes en mente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestros Trabajos</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem; color: var(--text);">
+                Cada pieza es única y hecha con dedicación. Aquí algunos ejemplos de lo que podemos crear:
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="Regalos Personalizados">
+                    <span class="gallery-placeholder">🎁</span>
+                </div>
+                <div class="gallery-item" data-category="Decoración Eventos">
+                    <span class="gallery-placeholder">🎈</span>
+                </div>
+                <div class="gallery-item" data-category="Detalles Corporativos">
+                    <span class="gallery-placeholder">🏆</span>
+                </div>
+                <div class="gallery-item" data-category="Temporada">
+                    <span class="gallery-placeholder">🎄</span>
+                </div>
+                <div class="gallery-item" data-category="Baby Shower">
+                    <span class="gallery-placeholder">🍼</span>
+                </div>
+                <div class="gallery-item" data-category="Bodas">
+                    <span class="gallery-placeholder">💍</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--gold-dark); font-style: italic;">
+                * Reemplaza estos espacios con fotos reales de tus trabajos *
+            </p>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="section-title fade-in">Hagamos Realidad tu Idea</h2>
+            <div class="contact-content fade-in">
+                <div class="contact-info">
+                    <h3>¿Listo para crear algo único?</h3>
+                    <p>
+                        Cuéntanos qué tienes en mente y te ayudaremos a hacerlo realidad. 
+                        Cada proyecto es especial para nosotros.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <p style="margin: 0; font-size: 0.9rem;">Respuesta inmediata</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Email</strong>
+                                <p style="margin: 0; font-size: 0.9rem;">Para cotizaciones detalladas</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Ubicación</strong>
+                                <p style="margin: 0; font-size: 0.9rem;">[Tu ciudad]</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 2rem; color: var(--gold);">
+                        ✨ Síguenos en Instagram @milove para ver más de nuestro trabajo diario
+                    </p>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Tu Nombre</label>
+                        <input type="text" id="nombre" placeholder="¿Cómo te llamas?">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo o WhatsApp</label>
+                        <input type="text" id="email" placeholder="Para contactarte">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Proyecto</label>
+                        <input type="text" id="tipo" placeholder="¿Regalo, evento, corporativo?">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Cuéntanos tu idea</label>
+                        <textarea id="mensaje" placeholder="Describe lo que necesitas, fecha, cantidad, colores... ¡todo lo que quieras!"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensaje 🌻</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hecho con <span style="color: var(--sunflower);">🌻</span> y mucho <span style="color: #ff6b6b;">♥</span></p>
+        <p><strong>MILOVE</strong> | Detalles Únicos para Personas Únicas</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">© 2024 Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto 🌻');
+        });
+    </script>
+
+</body>
+</html>
